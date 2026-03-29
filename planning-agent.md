@@ -4,157 +4,108 @@ You are a professional **Website Planning Agent**. Your job is to help the user 
 
 ---
 
-## How to Use This Agent
+## Step 1: Define Your Website Goals ✅
 
-Answer the questions below in each section. The agent will guide you through building a complete website plan.
-
----
-
-## Step 1: Define Your Website Goals
-
-**Answer these questions:**
-
-1. What is the purpose of your website? *(e.g., portfolio, e-commerce, blog, business landing page, SaaS product)*
-2. Who is your target audience? *(age, interests, location, technical level)*
-3. What do you want visitors to do when they land on your site? *(buy, sign up, read, contact you)*
-4. What does success look like for this website? *(traffic, conversions, leads)*
+1. **Purpose:** Interactive web app — User drückt einen Button → zufälliges Wort wird generiert → Pixabay wird nach einem passenden PNG durchsucht → Bild wird angezeigt.
+2. **Target Audience:** Entwickler, Kreative, neugierige Nutzer — technisch versiert.
+3. **What visitors should do:** Button drücken, Bild entdecken, Spaß haben.
+4. **Success:** Funktioniert zuverlässig, sieht toll aus, lädt schnell.
 
 ---
 
-## Step 2: Define Your Brand & Identity
+## Step 2: Brand & Identity ✅
 
-**Answer these questions:**
-
-1. What is your brand name?
-2. What tone/personality do you want? *(professional, playful, minimal, bold)*
-3. Do you have a color palette or logo already?
-4. What websites do you admire and why?
+1. **Brand name:** TBD (noch nicht festgelegt)
+2. **Tone/Personality:** 🎨 **Bunt & Verspielt** — random, kreativ, lebendig
+3. **Color palette:** Keine feste Palette — Farben können sich dynamisch mit dem Bild ändern (optional)
+4. **Inspiration:** Kreative, interaktive Web-Experimente
 
 ---
 
-## Step 3: Plan Your Site Structure (Sitemap)
+## Step 3: Site Structure ✅
 
-**Choose pages you need:**
+**Seiten:**
+- [x] Home (einzige Seite — Single Page App)
 
-- [ ] Home
-- [ ] About
-- [ ] Services / Products
-- [ ] Portfolio / Work
-- [ ] Blog / Articles
-- [ ] Pricing
-- [ ] Contact
-- [ ] FAQ
-- [ ] Other: ___________
-
-**Navigation structure:**
+**Navigation:**
 ```
-Home
-├── About
-├── Services
-│   ├── Service 1
-│   └── Service 2
-├── Portfolio
-├── Blog
-└── Contact
+Home (Single Page)
+└── [Button] → Wort generieren → PNG suchen → Bild anzeigen
 ```
-*(Edit this tree to match your structure)*
 
 ---
 
-## Step 4: Content Plan
-
-For each page, define:
+## Step 4: Content Plan ✅
 
 | Page | Headline | Key Message | Call to Action |
 |------|----------|-------------|----------------|
-| Home | | | |
-| About | | | |
-| Services | | | |
-| Contact | | | |
+| Home | "Entdecke die Welt in Bildern" | Jeden Klick ein neues Bild | "Zufälliges Bild generieren" Button |
 
 ---
 
-## Step 5: Features & Functionality
+## Step 5: Features & Functionality ✅
 
-**Check all features you need:**
-
-- [ ] Contact form
-- [ ] Newsletter signup
-- [ ] User login / accounts
-- [ ] E-commerce / payments
-- [ ] Search functionality
-- [ ] Blog / CMS
-- [ ] Analytics tracking
-- [ ] SEO optimization
-- [ ] Multi-language support
-- [ ] Dark mode
-- [ ] Mobile responsive (required)
-- [ ] Other: ___________
+- [x] **Random Word Generator** — via Random Word API (KI-generiert / echtes Wort)
+- [x] **Pixabay Bildsuche** — Sucht PNG zum generierten Wort
+- [x] **Bildanzeige** — Zeigt gefundenes PNG groß an
+- [x] **Wort-Anzeige** — Zeigt das generierte Wort als Label
+- [x] **Mobile responsive**
+- [ ] Loading-Animation während der Suche
+- [ ] Fehlerbehandlung wenn kein Bild gefunden
 
 ---
 
-## Step 6: Tech Stack Decision
+## Step 6: Tech Stack ✅
 
 **Frontend:**
-- [ ] HTML / CSS / JS (static)
-- [ ] React
-- [ ] Next.js
-- [ ] Vue.js
-- [ ] Other: ___________
+- [x] **Next.js** (App Router)
+- [x] **Tailwind CSS** für buntes, verspieltes Styling
 
-**Backend (if needed):**
-- [ ] Node.js / Express
-- [ ] Python / Django / Flask
-- [ ] Supabase / Firebase (serverless)
-- [ ] No backend needed
-- [ ] Other: ___________
+**Backend / API:**
+- [x] **Next.js API Routes** (serverless) für sichere API-Calls
+- [x] **Random Word API** — `https://random-word-api.herokuapp.com/word`
+- [x] **Pixabay API** — `https://pixabay.com/api/` (kostenlos, PNG-Filter)
 
 **Hosting:**
-- [ ] Vercel
-- [ ] Netlify
-- [ ] GitHub Pages
-- [ ] AWS / GCP
-- [ ] Other: ___________
+- [x] **Netlify**
 
 ---
 
-## Step 7: Timeline & Milestones
+## Step 7: Agent-System Architektur ✅
 
-| Milestone | Description | Target Date |
-|-----------|-------------|-------------|
-| Planning complete | All sections of this doc filled out | |
-| Design mockups | Wireframes / Figma designs done | |
-| Development start | Coding begins | |
-| MVP ready | Core pages built and working | |
-| Testing | Cross-browser, mobile, performance | |
-| Launch | Website goes live | |
+```
+orchestrator-agent.md          ← Steuert alle anderen
+├── ui-design-agent.md         ← UI, Farben, Layout, Tailwind
+├── backend-agent.md           ← API-Routes, Pixabay, Random Word
+├── documentation-agent.md     ← README, Kommentare, Docs
+└── testing-agent.md           ← Tests, QA, Edge Cases
+```
+
+**Orchestrator-Strategie:** Der Orchestrator kennt alle Subagenten, koordiniert die Reihenfolge (Design → Backend → Integration → Docs → Tests) und stellt sicher, dass kein Subagent isoliert arbeitet.
 
 ---
 
 ## Step 8: Launch Checklist
 
-- [ ] Domain name registered
-- [ ] Hosting configured
-- [ ] SSL certificate active (HTTPS)
-- [ ] All pages reviewed for typos
-- [ ] Mobile tested on real devices
-- [ ] Page speed tested (Google PageSpeed)
-- [ ] SEO meta tags added
-- [ ] Analytics connected (Google Analytics / Plausible)
-- [ ] Contact form tested
-- [ ] Backup configured
+- [ ] Pixabay API Key registriert
+- [ ] Next.js Projekt initialisiert
+- [ ] API Routes implementiert
+- [ ] UI designed und implementiert
+- [ ] Netlify Deployment konfiguriert
+- [ ] Mobile getestet
+- [ ] Error Handling implementiert
 
 ---
 
-## 📋 Summary (Fill this last)
+## 📋 Summary
 
-> **Website Name:**  
-> **Purpose:**  
-> **Target Audience:**  
-> **Key Pages:**  
-> **Tech Stack:**  
-> **Launch Target:**  
+> **Website Name:** TBD  
+> **Purpose:** Random Word → Pixabay PNG Suche → Bildanzeige  
+> **Target Audience:** Entwickler & Kreative  
+> **Key Pages:** Single Page App (Home)  
+> **Tech Stack:** Next.js + Tailwind + Pixabay API + Netlify  
+> **Agent System:** Orchestrator → UI, Backend, Docs, Testing  
 
 ---
 
-*Agent created by GitHub Copilot CLI — update this file as your plan evolves.*
+*Geplant mit GitHub Copilot CLI Planning Agent.*
