@@ -22,7 +22,9 @@ export default function Home() {
       const res = await fetch('/api/random-image')
       const data = await res.json()
       if (!res.ok) {
-        setError(data.word ? `😅 Kein Bild gefunden für „${data.word}" — versuch's nochmal!` : '😬 Etwas ist schiefgelaufen. Versuch es nochmal!')
+        setError(data.word
+          ? `😅 Kein Bild gefunden für „${data.word}" — versuch's nochmal!`
+          : '😬 Etwas ist schiefgelaufen. Versuch es nochmal!')
       } else {
         setResult(data)
       }
@@ -35,7 +37,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-400 to-yellow-300 flex flex-col items-center justify-center p-8 gap-10">
-      {/* Title */}
       <div className="text-center">
         <h1 className="text-4xl md:text-6xl font-black text-white drop-shadow-lg tracking-tight">
           🎲 RandomImage
@@ -45,7 +46,6 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Button */}
       <button
         onClick={generate}
         disabled={loading}
@@ -64,24 +64,19 @@ export default function Home() {
         )}
       </button>
 
-      {/* Error */}
       {error && (
         <div className="animate-fade-in bg-white/20 backdrop-blur-sm text-white font-semibold text-lg px-8 py-4 rounded-2xl shadow-lg text-center max-w-md">
           {error}
         </div>
       )}
 
-      {/* Result */}
       {result && (
         <div className="animate-fade-in flex flex-col items-center gap-6 w-full max-w-lg">
-          {/* Word label */}
           <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
             <span className="text-white font-black text-2xl tracking-wide drop-shadow">
               ✨ {result.word}
             </span>
           </div>
-
-          {/* Image card */}
           <div className="w-full rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white/30">
             <Image
               src={result.imageUrl}
@@ -97,4 +92,3 @@ export default function Home() {
     </main>
   )
 }
-
