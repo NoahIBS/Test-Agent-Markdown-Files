@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎲 RandomImage
 
-## Getting Started
+A Next.js single-page app where you click a button → a random word is generated → Pixabay is searched for a matching photo → the image is displayed. Colorful, playful, and endlessly surprising.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Styling:** Tailwind CSS
+- **APIs:** [Random Word API](https://random-word-api.herokuapp.com/) + [Pixabay API](https://pixabay.com/api/docs/)
+- **Hosting:** Netlify
+
+## Setup
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/NoahIBS/Test-Agent-Markdown-Files.git
+cd Test-Agent-Markdown-Files/website
+
+# 2. Install dependencies
+npm install
+
+# 3. Add your Pixabay API key
+cp .env.example .env.local
+# Edit .env.local and set PIXABAY_API_KEY
+
+# 4. Start the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Getting a Pixabay API Key
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Go to [https://pixabay.com/api/docs/](https://pixabay.com/api/docs/)
+2. Sign up for a free account
+3. Copy your API key and paste it into `.env.local`
 
-## Learn More
+## API Documentation
 
-To learn more about Next.js, take a look at the following resources:
+### `GET /api/random-image`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fetches a random word and finds a matching photo from Pixabay.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Success (200):**
+```json
+{ "word": "elephant", "imageUrl": "https://cdn.pixabay.com/...", "imageAlt": "elephant, animal, wildlife" }
+```
 
-## Deploy on Vercel
+**No image found (404):**
+```json
+{ "error": "No image found", "word": "xyzabc" }
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Server error (500):**
+```json
+{ "error": "Something went wrong" }
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Netlify Deployment
+
+1. Push your code to GitHub
+2. Connect the repo to [Netlify](https://netlify.com)
+3. Set **Base directory** to `website`
+4. Set **Build command** to `npm run build`
+5. Set **Publish directory** to `.next`
+6. Add the environment variable `PIXABAY_API_KEY` in Netlify → Site settings → Environment variables
+7. Deploy!
